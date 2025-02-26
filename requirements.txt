@@ -1,6 +1,6 @@
-import streamlit as st
-import mysql.connector
-import pandas as pd
-import plotly.express as px
-from datetime import datetime
-from dotenv import load_dotenv
+streamlit
+mql
+pandas
+plotly
+datetime
+load_dotenv
