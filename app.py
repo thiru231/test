@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import mysql.connector
 import pandas as pd
@@ -8,6 +9,7 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+
 
 # Secure Database Connection
 conn = mysql.connector.connect(
