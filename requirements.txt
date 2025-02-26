@@ -1,6 +1,4 @@
 streamlit
-mql
+mysql-connector-python
 pandas
 plotly
-datetime
-load_dotenv
