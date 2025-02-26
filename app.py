@@ -4,12 +4,18 @@ import pandas as pd
 import plotly.express as px
 from datetime import datetime
 
-# MySQL Connection
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Secure Database Connection
 conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="iswarya",
-    database="task_management"
+    host=os.getenv("MYSQL_HOST"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASS"),
+    database=os.getenv("MYSQL_DB"),
+    ssl_disabled=False  # Ensures Secure TLS Connection
 )
 cursor = conn.cursor()
 
