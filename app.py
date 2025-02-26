@@ -11,14 +11,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# Secure Database Connection
-conn = mysql.connector.connect(
-    host=os.getenv("MYSQL_HOST"),
-    user=os.getenv("MYSQL_USER"),
-    password=os.getenv("MYSQL_PASS"),
-    database=os.getenv("MYSQL_DB"),
-    ssl_disabled=False  # Ensures Secure TLS Connection
-)
+# Attempt MySQL Connection
+try:
+    conn = mysql.connector.connect(
+        host=st.secrets["mysql"]["host"],
+        user=st.secrets["mysql"]["user"],
+        password=st.secrets["mysql"]["password"],
+        database=st.secrets["mysql"]["database"],
+        connect_timeout=10  # Optional: Set timeout to prevent long waits
+    )
+    st.success("✅ Connected to MySQL successfully!")
+except mysql.connector.Error as err:
+    st.error(f"❌ Database connection failed: {err}")
+    st.stop()  # Prevent further execution if connection fails
 cursor = conn.cursor()
 
 # Function to check user login
